@@ -27,7 +27,7 @@ Flags:
 
 ## Example
 
-Extract an OLM index database, generate the graph as a PNG (named `<dbFile>.png`), and open it with your favorite image viewer.
+Extract an OLM index database and generate the graph as PNG and DOT files (named `<dbFile>.png`, and `<dbFile>.dot`):
 
 ```sh
 oc image extract quay.io/joelanford/example-operator-index:0.1.0 --file=/database/index.db
