@@ -81,11 +81,7 @@ func run(dbFile, packageName string) error {
 		return err
 	}
 
-	pngFile := filepath.Join(filepath.Dir(dbFile), fmt.Sprintf("%s.png", filepath.Base(dbFile)))
-	if err := g.RenderFilename(graph, graphviz.PNG, pngFile); err != nil {
-		return err
-	}
-	dotFile :=filepath.Join(filepath.Dir(dbFile), fmt.Sprintf("%s.dot", filepath.Base(dbFile)))
+	dotFile := filepath.Join(filepath.Dir(dbFile), fmt.Sprintf("%s.dot", filepath.Base(dbFile)))
 	if err := g.RenderFilename(graph, graphviz.XDOT, dotFile); err != nil {
 		return err
 	}

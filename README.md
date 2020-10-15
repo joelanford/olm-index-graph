@@ -27,9 +27,12 @@ Flags:
 
 ## Example
 
-Extract an OLM index database and generate the graph as PNG and DOT files (named `<dbFile>.png`, and `<dbFile>.dot`):
+Extract an OLM index database, convert the graph database to a .dot graphviz file (named `<dbFile>.dot`), and render it:
 
 ```sh
-oc image extract quay.io/joelanford/example-operator-index:0.1.0 --file=/database/index.db
-olm-index-graph index.db
+IMAGE=quay.io/operator-framework/upstream-community-operators:latest
+ID=$(docker create $IMAGE)
+docker cp $ID:/bundles.db upstream-community-operators.db && docker rm $ID
+olm-index-graph upstream-community-operators.db
+dot upstream-community-operators.db.dot -Tsvg -o upstream-community-operators.db.svg
 ```
